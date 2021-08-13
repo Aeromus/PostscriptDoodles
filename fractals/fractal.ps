@@ -1,0 +1,122 @@
+%Andrew Knoblach
+%Fracals assignment
+%October 2019
+
+/F {
+	newpath
+	0 0 moveto
+	10 0 lineto
+	stroke
+	10 0 translate
+} def
+
+/L { 
+	60 rotate
+} def
+
+/R {
+	-60 rotate
+} def
+
+/lr{
+
+	25 rotate
+} def
+
+/ll{
+	-25 rotate
+} def
+
+/tr
+{
+	120 rotate
+} def
+
+/tl
+{
+	-120 rotate
+
+} def
+
+/S {
+	gsave 
+}def
+
+/E {
+	grestore
+} def
+
+/snowflake
+{
+	dup 0 ne
+	{
+		1 sub
+		dup dup dup 
+		snowflake
+		L
+		snowflake
+		R R
+		snowflake
+		L
+		snowflake
+	}
+	{
+	pop	
+	F
+	}
+	ifelse	
+}def 
+/tree
+{
+	dup 0 ne
+	{
+		1 sub dup
+		%11 102 35 setrgbcolor
+ 		F
+		S ll
+		tree
+		E lr
+		tree
+	}
+	{
+		pop 
+		F
+	}
+ifelse
+}def
+
+%This was supposed to be a sarpinski triangle but I kinda made a different cool thing instead
+/trig
+{
+	dup 0 ne
+	{
+		1 sub dup  
+		F
+		tr tr
+		trig
+		F
+		tl
+		trig
+	}
+	{
+		pop
+		F
+	}
+ifelse
+} def
+72 72 translate
+
+
+%-350 -200 translate
+
+%8 snowflake
+
+%-350 -200
+
+7 trig
+100 -200 translate 
+7 tree
+-450 70 translate
+5 snowflake
+
+showpage

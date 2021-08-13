@@ -1,0 +1,93 @@
+%Post Script Assignment
+%Andrew Knoblach
+%9/19/19
+
+
+%Formulas
+%Demos.com helps for testing kinda
+% X = ((a-b) * cos(t)) + d(cos(((a-b)*t)/b))
+%
+% Y = ((a-b) * sin(t)) - d(sin(((a-b)*t)/b))
+
+
+/inch {72 mul} def
+
+
+%Basic Hypotrochoid Equations
+/spiral{
+
+	/a exch def
+	/b exch def
+	/d exch def
+	/t exch def
+
+	%X
+	b a sub t cos mul
+
+	d b a sub b exch div t mul cos mul add
+
+
+	
+	%Y
+	b a sub t sin mul
+
+	d b a sub b exch div t mul sin mul add
+
+	%a b exch sub t sin mul
+	%d a b exch sub b exch div t mul sin mul add 
+
+} def
+
+
+/lace{
+
+	/R exch def
+	/r exch def
+	/d exch def
+	/t exch def
+
+	%X
+	1 R sub r d add div R sub r cos t mul d cos R sub r r div t mul add mul
+
+
+	%Y
+	1 R sub r d add div R sub r sin t mul d sin R sub r r div t mul sub mul
+
+
+} def 
+%Center-ish the image on the canvas
+4.25 inch 5.5 inch translate
+0 30 360
+{
+	1 1 180
+	{
+		newpath
+		0 0 moveto
+		dup
+		dup 520 div exch 10 div exch 0
+		setrgbcolor
+		80 89 80 
+		spiral lineto
+		stroke
+	}for
+	rotate
+}for
+
+1.25 inch 3.25 inch translate
+
+0 30 360
+{
+	1 1 360
+	{
+		newpath
+		0 0 moveto
+		dup
+		dup 520 div exch 10 div exch 0
+		setrgbcolor
+		8 3 9 
+		spiral lineto
+		stroke
+	}for
+	rotate
+}for
+showpage

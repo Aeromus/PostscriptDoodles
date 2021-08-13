@@ -1,0 +1,121 @@
+%Post Script Assignment
+%Andrew Knoblach
+%9/19/19
+
+
+%Formulas
+%Desmos.com Good for testing
+% X = ((a-b) * cos(t)) + d(cos(((a-b)*t)/b))
+%
+% Y = ((a-b) * sin(t)) - d(sin(((a-b)*t)/b))
+
+
+/inch {72 mul} def
+
+%Basic Hypotrochoid Equations
+/spiral{
+
+	/a exch def
+	/b exch def
+	/d exch def
+	/t exch def
+
+	% X
+	% X = ((a-b) * cos(t)) + d(cos(((a-b)*t)/b))
+
+	b a sub t cos mul
+
+	d b a sub b exch div t mul cos mul add
+	
+	%Y
+	% Y = ((a-b) * sin(t)) - d(sin(((a-b)*t)/b))
+	b a sub t sin mul
+
+	d b a sub b exch div t mul sin mul add
+
+} def
+
+%Center-ish the image on the canvas
+4.25 inch 5.5 inch translate
+
+
+%Outer / Backmost spiral
+0 15 720
+{
+	1 1 360
+	{
+		newpath
+		0 0 moveto
+		dup
+		%Coloring
+		dup 120 div exch 360 div exch 120
+		setrgbcolor
+
+		50 150 300
+		spiral lineto
+		stroke
+
+	}for
+	rotate
+}for
+
+%Middle Spiral
+0 15 720
+{
+	1 1 360
+	{
+		newpath
+		0 0 moveto
+		dup
+		%Coloring
+		dup 420 div exch 20 div exch 0
+		setrgbcolor
+
+		100 300 350
+		spiral lineto
+		stroke
+
+	}for
+	rotate
+}for
+
+%Innermost / top  Spiral
+0 15 720
+{
+	1 1 360
+	{
+		newpath
+		0 0 moveto
+		dup
+		%Coloring
+		dup 270 div exch 720 div exch 0
+		setrgbcolor
+
+		60 120 210
+		spiral lineto
+		stroke
+
+	}for
+	rotate
+}for
+
+%Mini Inner flower
+0 180 360
+{
+	1 1 360
+	{
+		newpath
+		0 0 moveto
+		dup
+		%Coloring
+		dup 120 div exch 10 div exch 0
+		setrgbcolor
+
+		10 20 30
+		spiral lineto
+		stroke
+
+	}for
+	rotate
+}for
+showpage

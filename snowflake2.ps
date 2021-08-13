@@ -1,0 +1,18 @@
+%!PS-Adobe
+%%BoundingBox: 100 77 524 567
+/side {dup 0 gt {1 sub 1 3 div dup scale side 60 rotate side
+-120 rotate side 60 rotate side 3 dup scale 1 add}
+{1 1 rlineto 1 1 translate} ifelse} def
+/star {dup currentlinewidth 1 1 4 -1 roll {pop 3 div} for setlinewidth
+newpath 0 0 moveto side -120 rotate side -120 rotate side
+closepath gsave 0.5 setgray fill grestore stroke pop} def
+100 300 translate
+currentlinewidth 300 dup dup scale div setlinewidth
+15 rotate
+5 star
+showpage
+100 300 translate
+currentlinewidth 300 dup dup scale div setlinewidth
+15 rotate
+3 star
+showpage
